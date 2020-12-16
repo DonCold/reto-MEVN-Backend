@@ -1,0 +1,27 @@
+{
+  "name": "reto-mevn-backend",
+  "version": "1.0.0",
+  "description": "Reto de Misión Tic, manejando la Metodología MEVN, aunque la M es de MySql :D. Repositorio del Backend-end",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonCold/reto-MEVN-Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DonCold/reto-MEVN-Backend/issues"
+  },
+  "homepage": "https://github.com/DonCold/reto-MEVN-Backend#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
