@@ -9,7 +9,7 @@ module.exports = {
         try {
             const re = await Usuario.findAll()
             res.status(200).json(re)
-            
+
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
@@ -24,26 +24,24 @@ module.exports = {
     login : async (req, res, next) => {
 
         try {
-                const user = await User.findOne( { where :  { email : req.body.email } } )
+                const user = await Usuario.findOne( { where :  { email: req.body.email } } )
                 if(user){
+
                     // Evaluar contraseña
-                    const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password)
+                    const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
+
                 if (contrasenhaValida)
                 {
                     const token = servToken.encode(user.id, user.rol);
 
-                    res.status(200).send({
-                        auth : true,
-                        tokenReturn : token,
-                        user : user
-                    })
+                    res.status(200).send({ tokenReturn: token });
 
                 }  else {
-                    res.status(401).send({ auth: false, tokenReturn: null, reason:"Invalid Password!" });
+                    res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
                 }
 
             } else {
-                res.status(404).send('Usuario invalidos')
+                res.status(404).send('User Not Found.');
             }
 
         } catch (error) {
