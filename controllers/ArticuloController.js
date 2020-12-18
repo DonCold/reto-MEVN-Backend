@@ -8,7 +8,7 @@ module.exports = {
         try {
             const re = await Articulo.findAll()
             res.status(200).json(re)
-            
+
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
@@ -19,7 +19,7 @@ module.exports = {
         try {
             const re = await Articulo.create(req.body);
             res.status(200).json(re);
-            
+
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
@@ -30,7 +30,7 @@ module.exports = {
         try {
             const re = await Articulo.update({categoriaId: req.body.categoriaId, nombre: req.body.nombre, descripcion: req.body.descripcion, codigo: req.body.codigo},{where : {id: req.body.id}})
             res.status(200).json(re);
-            
+
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
@@ -57,5 +57,5 @@ module.exports = {
         }
 
     }
-    
+
 }

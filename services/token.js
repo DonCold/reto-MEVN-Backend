@@ -18,7 +18,6 @@ module.exports = {
         } catch (error) {
             return null
         }
-        
     },
     //permite decodificar el token
     decode: async(token) => {
