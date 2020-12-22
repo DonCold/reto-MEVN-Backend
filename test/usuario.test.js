@@ -49,7 +49,6 @@ describe('usuarios Endpoints', () => {
                 password: 'micontraseña',
                 email: 'prueba@gmail.com',
                 id: 1
-
             })
         expect(res.statusCode).toEqual(200)
     })

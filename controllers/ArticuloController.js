@@ -45,7 +45,6 @@ module.exports = {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
         }
-
     },
     deactivate : async (req, res, next) => {
         try {
@@ -55,7 +54,6 @@ module.exports = {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
         }
-
     }
 
 }
