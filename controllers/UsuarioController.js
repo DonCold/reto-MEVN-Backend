@@ -9,16 +9,26 @@ module.exports = {
         try {
             const re = await Usuario.findAll()
             res.status(200).json(re)
-
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
         }
     },
 
-    register : async (req, res, next) => {
+    add : async (req, res, next) => {
         res.status(200).send('Lo haremos en el sprint 3')
+    },
 
+    update : async (req, res, next) => {
+        res.status(200).send('Hola Mundo');
+    },
+
+    activate : async (req, res, next) => {
+        res.status(200).send('Hola Mundo');
+    },
+
+    deactivate : async (req, res, next) => {
+        res.status(200).send('Hola Mundo');
     },
 
     login : async (req, res, next) => {
