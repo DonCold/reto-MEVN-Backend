@@ -27,7 +27,7 @@ module.exports = {
 
     update : async (req, res, next) => {
         try {
-            const user = await Usuario.findOne({where : {id: req.body.id}});
+            const user = await Usuario.findOne({where : {email: req.body.email}});
 
             // Evaluar contraseña
             const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
@@ -36,7 +36,7 @@ module.exports = {
                 const contrasenia = bcrypt.hashSync(user.password);
 
                 const re = await Usuario.update({ nombre: req.body.nombre, password: contrasenia,
-                    estado: req.body.estado},{where : {id: req.body.id}})
+                    estado: req.body.estado},{where : {email: req.body.email}})
                 res.status(200).json(re);
 
             } else {
