@@ -1,7 +1,6 @@
 var jwt = require('jsonwebtoken');
 const models = require('../models');
 
-
 module.exports = {
 
     //generar el token

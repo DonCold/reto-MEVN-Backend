@@ -9,16 +9,63 @@ module.exports = {
         try {
             const re = await Usuario.findAll()
             res.status(200).json(re)
-
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
             next(error)
         }
     },
 
-    register : async (req, res, next) => {
-        res.status(200).send('Lo haremos en el sprint 3')
+    add : async (req, res, next) => {
+        try {
+            const re = await Usuario.create(req.body);
+            res.status(200).json(re);
+        } catch (error) {
+            res.status(500).json({ 'error' : 'Oops paso algo' })
+            next(error)
+        }
+    },
 
+    update : async (req, res, next) => {
+        try {
+            const user = await Usuario.findOne({where : {email: req.body.email}});
+
+            // Evaluar contraseña
+            const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
+
+            if(contrasenhaValida){
+                const contrasenia = bcrypt.hashSync(user.password);
+
+                const re = await Usuario.update({ nombre: req.body.nombre, password: contrasenia,
+                    estado: req.body.estado},{where : {email: req.body.email}})
+                res.status(200).json(re);
+
+            } else {
+                res.status(404).json({ 'error' : 'No se Encontro el Usuario' });
+            }
+        } catch (error) {
+            res.status(500).json({ 'error' : 'Oops paso algo' })
+            next(error)
+        }
+    },
+
+    activate : async (req, res, next) => {
+        try {
+            const re = await Usuario.update({estado: 1},{where : {id: req.body.id}})
+            res.status(200).json(re);
+        } catch (error) {
+            res.status(500).json({ 'error' : 'Oops paso algo' })
+            next(error)
+        }
+    },
+
+    deactivate : async (req, res, next) => {
+        try {
+            const re = await Usuario.update({estado: 0},{where : {id: req.body.id}})
+            res.status(200).json(re);
+        } catch (error) {
+            res.status(500).json({ 'error' : 'Oops paso algo' })
+            next(error)
+        }
     },
 
     login : async (req, res, next) => {
@@ -27,8 +74,8 @@ module.exports = {
                 const user = await Usuario.findOne( { where :  { email: req.body.email } } )
                 if(user){
 
-                    // Evaluar contraseña
-                    const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
+                // Evaluar contraseña
+                const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
 
                 if (contrasenhaValida)
                 {

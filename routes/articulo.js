@@ -12,5 +12,4 @@ router.put('/update', articuloController.update);
 router.put('/activate', articuloController.activate);
 router.put('/deactivate', articuloController.deactivate);
 
-
 module.exports = router;

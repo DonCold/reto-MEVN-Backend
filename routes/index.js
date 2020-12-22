@@ -3,8 +3,6 @@ const usuarioRouter = require('./usuario');
 const articuloRouter = require('./articulo');
 const categoriaRouter = require('./categoria');
 
-
-
 const router = routerx();
 
 router.use('/usuario', usuarioRouter);
