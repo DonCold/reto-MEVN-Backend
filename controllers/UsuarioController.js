@@ -17,7 +17,16 @@ module.exports = {
 
     add : async (req, res, next) => {
         try {
-            const re = await Usuario.create(req.body);
+            const contrasenia = bcrypt.hashSync(req.body.password);
+
+            const re = await Usuario.create({
+                "rol": req.body.rol,
+                "nombre": req.body.nombre,
+                "password": contrasenia,
+                "email": req.body.email,
+                "estado": req.body.estado
+            });
+
             res.status(200).json(re);
         } catch (error) {
             res.status(500).json({ 'error' : 'Oops paso algo' })
@@ -27,16 +36,13 @@ module.exports = {
 
     update : async (req, res, next) => {
         try {
-            const user = await Usuario.findOne({where : {email: req.body.email}});
+            const user = await Usuario.findOne({where : {id: req.body.id}});
 
-            // Evaluar contraseña
-            const contrasenhaValida = bcrypt.compareSync(req.body.password, user.password);
-
-            if(contrasenhaValida){
-                const contrasenia = bcrypt.hashSync(user.password);
+            if(user){
+                const contrasenia = bcrypt.hashSync(req.body.password);
 
                 const re = await Usuario.update({ nombre: req.body.nombre, password: contrasenia,
-                    estado: req.body.estado},{where : {email: req.body.email}})
+                    estado: req.body.estado},{where : {id: req.body.id}})
                 res.status(200).json(re);
 
             } else {

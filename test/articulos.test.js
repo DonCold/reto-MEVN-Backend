@@ -35,7 +35,6 @@ describe('Articulos Endpoints', () => {
                 codigo: '2222',
                 estado: 1,
                 categoriaId: 1,
-
             })
         expect(res.statusCode).toEqual(200)
     })
@@ -49,7 +48,6 @@ describe('Articulos Endpoints', () => {
                 descripcion: 'lorem limpsus update',
                 codigo: '22225',
                 id: 1
-
             })
         expect(res.statusCode).toEqual(200)
     })

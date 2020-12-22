@@ -1,0 +1,135 @@
+### Crear Usuario
+POST http://localhost:3000/api/usuario/add
+Content-Type: application/json
+
+{
+    "rol": "Administrador",
+    "nombre": "Nombre_prueba",
+    "password": "micontraseña",
+    "email": "prueba@gmail.com",
+    "estado": 1
+}
+
+### Actualizar Usuario
+PUT http://localhost:3000/api/usuario/update
+Content-Type: application/json
+
+{
+    "nombre": "nombre_update",
+    "rol": "Administrador",
+    "password": "micontraseña2",
+    "email": "pruebados@gmail.com",
+    "id": 6
+}
+
+### Logueando Usuario
+POST http://localhost:3000/api/usuario/login
+Content-Type: application/json
+
+{
+    "email": "prueba@gmail.com",
+    "password": "micontraseña"
+}
+
+### Lista de Usuarios
+GET http://localhost:3000/api/usuario/list
+
+
+### Activar Usuario
+PUT http://localhost:3000/api/usuario/activate
+Content-Type: application/json
+
+{
+    "id": 6
+}
+
+### Desactivar Usuario ============================== Usuarios Listos
+PUT http://localhost:3000/api/usuario/deactivate
+Content-Type: application/json
+
+{
+    "id": 6
+}
+
+### Lista Categorias
+GET http://localhost:3000/api/categoria/list
+
+
+### Añadir Categorias
+POST http://localhost:3000/api/categoria/add
+Content-Type: application/json
+
+{
+    "nombre": "categirua_test",
+    "descripcion": "lorem limpsus",
+    "estado": 1
+}
+
+### Actualizar Categorias
+PUT http://localhost:3000/api/categoria/update
+Content-Type: application/json
+
+{
+    "nombre": "categirua_update",
+    "descripcion": "lorem limpsus",
+    "estado": 1,
+    "id": 1
+}
+
+### Activar Categorias
+PUT http://localhost:3000/api/categoria/activate
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+### Desactivar Categorias ============================== Categorias Listo
+PUT http://localhost:3000/api/categoria/deactivate
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+### Lista Articulos
+GET http://localhost:3000/api/articulo/list
+
+### Añadir Articulos   X
+POST http://localhost:3000/api/articulo/add
+Content-Type: application/json
+
+{
+    "categoriaId": 1,
+    "nombre": "articulo_test",
+    "descripcion": "lorem limpsus",
+    "codigo": "2222",
+    "estado": 1
+}
+
+### Actualizar Articulos
+PUT http://localhost:3000/api/articulo/update
+Content-Type: application/json
+
+{
+    "nombre": "articulo_test_update",
+    "descripcion": "lorem limpsus update",
+    "codigo": "22225",
+    "id": 2
+}
+
+### Activar Articulos
+PUT http://localhost:3000/api/articulo/activate
+Content-Type: application/json
+
+{
+    "id": 2
+}
+
+### Desactivar Articulos ============================== Articulos Listos
+PUT http://localhost:3000/api/articulo/deactivate
+Content-Type: application/json
+
+{
+    "id": 2
+}
