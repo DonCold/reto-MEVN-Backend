@@ -27,13 +27,12 @@ POST http://localhost:3000/api/usuario/login
 Content-Type: application/json
 
 {
-    "email": "prueba@gmail.com",
-    "password": "micontraseña"
+    "email": "luis@gmail.com",
+    "password": "luis123"
 }
 
 ### Lista de Usuarios
 GET http://localhost:3000/api/usuario/list
-
 
 ### Activar Usuario
 PUT http://localhost:3000/api/usuario/activate

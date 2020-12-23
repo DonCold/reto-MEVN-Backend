@@ -42,7 +42,7 @@ module.exports = {
                 const contrasenia = bcrypt.hashSync(req.body.password);
 
                 const re = await Usuario.update({ nombre: req.body.nombre, password: contrasenia,
-                    estado: req.body.estado},{where : {id: req.body.id}})
+                    estado: req.body.estado, email: req.body.email},{where : {id: req.body.id}})
                 res.status(200).json(re);
 
             } else {
@@ -78,6 +78,7 @@ module.exports = {
 
         try {
                 const user = await Usuario.findOne( { where :  { email: req.body.email } } )
+
                 if(user){
 
                 // Evaluar contraseña
@@ -86,9 +87,8 @@ module.exports = {
                 if (contrasenhaValida)
                 {
                     const token = servToken.encode(user.id, user.rol);
-
-                    res.status(200).send({ tokenReturn: token });
-
+                    console.log(token);
+                    res.status(200).send({ tokenReturn: token, user: user});
                 }  else {
                     res.status(401).send({ auth: false, accessToken: null, reason: "Invalid Password!" });
                 }
